@@ -28,7 +28,7 @@ module mem(
 	output reg[`RegBus]          	mem_data_o,
 	output reg                   	mem_ce_o,
 	//led灯输出	
-	output reg[`RegBus]				led_out
+	output reg[11:0]				led_out
 );
 
 	wire[`RegBus] zero32;
