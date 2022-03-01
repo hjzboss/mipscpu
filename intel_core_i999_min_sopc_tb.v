@@ -18,7 +18,7 @@ module intel_core_i999_min_sopc_tb();
     rst = `RstEnable;
     switch_on = 12'd6;
     #195 rst= `RstDisable;
-    #4100 $stop;
+    #4100000 $stop;
   end
        
   intel_core_i999_min_sopc intel_core_i999_min_sopc0(
