@@ -2,7 +2,7 @@
 `include "defines.v"
 
 //简单sopc
-module intel_core_i999_min_sopc(
+module jz_core_min_sopc(
 
 	input wire										clk,
 	input wire										rst,
@@ -26,7 +26,7 @@ module intel_core_i999_min_sopc(
 		.fp_clk(fp_clk)
 	);
 
- 	intel_core_i999 core0(
+ 	jz_core core0(
 		.clk(fp_clk),
 		.rst(rst),
 	

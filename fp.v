@@ -1,4 +1,4 @@
-//分频器
+//分频器，此处只是为了分到最大值，便于fpga板上观察
 `include "defines.v"
 
 module fp(

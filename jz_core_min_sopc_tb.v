@@ -3,10 +3,10 @@
 `timescale 1ns/1ps
 
 //testbench
-module intel_core_i999_min_sopc_tb();
+module jz_core_min_sopc_tb();
 
-  reg     CLOCK_50;
-  reg     rst;
+  reg           CLOCK_50;
+  reg           rst;
   reg[11:0]     switch_on;
        
   initial begin
@@ -21,7 +21,7 @@ module intel_core_i999_min_sopc_tb();
     #4100 $stop;
   end
        
-  intel_core_i999_min_sopc intel_core_i999_min_sopc0(
+  jz_core_min_sopc dut(
 		.clk(CLOCK_50),
 		.rst(rst),
     .switch_on(switch_on)

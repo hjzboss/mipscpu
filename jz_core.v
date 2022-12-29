@@ -1,7 +1,7 @@
 
 `include "defines.v"
 
-module intel_core_i999(
+module jz_core(
 
 	input	wire					clk,
 	input wire						rst,
@@ -93,8 +93,7 @@ module intel_core_i999(
 		.branch_flag_i(id_branch_flag_o),
 		.branch_target_address_i(branch_target_address),		
 		.pc(pc),
-		.ce(rom_ce_o)	
-			
+		.ce(rom_ce_o)
 	);
 	
   	assign rom_addr_o = pc;
