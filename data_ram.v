@@ -3,12 +3,12 @@
 //32位数据存储器
 module data_ram(
 
-	input wire										clk,
-	input wire										ce,
-	input wire										we,
-	input wire[`DataAddrBus]				addr,
-	input wire[`DataBus]					data_i,
-	output reg[`DataBus]					data_o
+	input wire					clk,
+	input wire					ce,
+	input wire					we,
+	input wire[`DataAddrBus]	addr,
+	input wire[`DataBus]		data_i,
+	output reg[`DataBus]		data_o
 	
 );
 
@@ -17,7 +17,8 @@ module data_ram(
 	always @ (posedge clk) begin
 		if (ce == `ChipDisable) begin
 		//do nothing
-		end else if(we == `WriteEnable) begin
+		end
+		else if(we == `WriteEnable) begin
 			data_mem[addr] <= data_i;	   	    
 		end
 	end
@@ -25,9 +26,11 @@ module data_ram(
 	always @ (*) begin
 		if (ce == `ChipDisable) begin
 			data_o <= `ZeroWord;
-	  end else if(we == `WriteDisable) begin
+	  	end
+		else if(we == `WriteDisable) begin
 		    data_o <= data_mem[addr];
-		end else begin
+		end
+		else begin
 			data_o <= `ZeroWord;
 		end
 	end		

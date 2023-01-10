@@ -1,10 +1,9 @@
-
 `include "defines.v"
 
 //寄存器堆
 module regfile(
 
-	input	wire								clk,
+	input wire									clk,
 	input wire									rst,
 	
 	input wire									we,
@@ -12,12 +11,12 @@ module regfile(
 	input wire[`RegBus]							wdata,
 	
 	input wire									re1,
-	input wire[`RegAddrBus]			  			raddr1,
-	output reg[`RegBus]           				rdata1,
+	input wire[`RegAddrBus]						raddr1,
+	output reg[`RegBus]							rdata1,
 	
 	input wire									re2,
-	input wire[`RegAddrBus]			  			raddr2,
-	output reg[`RegBus]           				rdata2
+	input wire[`RegAddrBus]						raddr2,
+	output reg[`RegBus]							rdata2
 	
 );
 
@@ -34,32 +33,40 @@ module regfile(
 	//解决数据相关问题，方法：旁路和停顿
 	always @ (*) begin
 		if(rst == `RstEnable) begin
-			  rdata1 <= `ZeroWord;
-	  end else if(raddr1 == `RegNumLog2'h0) begin
-	  		rdata1 <= `ZeroWord;
-	  end else if((raddr1 == waddr) && (we == `WriteEnable) 
+			rdata1	<= `ZeroWord;
+	  	end 
+		else if(raddr1 == `RegNumLog2'h0) begin
+	  		rdata1	<= `ZeroWord;
+	  	end 
+		else if((raddr1 == waddr) && (we == `WriteEnable) 
 	  	            && (re1 == `ReadEnable)) begin
-	  	  rdata1 <= wdata;
-	  end else if(re1 == `ReadEnable) begin
-	      rdata1 <= regs[raddr1];
-	  end else begin
-	      rdata1 <= `ZeroWord;
-	  end
+	  	  	rdata1	<= wdata;
+	  	end 
+		else if(re1 == `ReadEnable) begin
+	      	rdata1	<= regs[raddr1];
+	  	end 
+		else begin
+	      	rdata1	<= `ZeroWord;
+	  	end
 	end
 
 	always @ (*) begin
 		if(rst == `RstEnable) begin
-			  rdata2 <= `ZeroWord;
-	  end else if(raddr2 == `RegNumLog2'h0) begin
-	  		rdata2 <= `ZeroWord;
-	  end else if((raddr2 == waddr) && (we == `WriteEnable) 
+			rdata2	<= `ZeroWord;
+		end
+		else if(raddr2 == `RegNumLog2'h0) begin
+	  		rdata2	<= `ZeroWord;
+	  	end
+		else if((raddr2 == waddr) && (we == `WriteEnable) 
 	  	            && (re2 == `ReadEnable)) begin
-	  	  rdata2 <= wdata;
-	  end else if(re2 == `ReadEnable) begin
-	      rdata2 <= regs[raddr2];
-	  end else begin
-	      rdata2 <= `ZeroWord;
-	  end
+	  		rdata2	<= wdata;
+	  	end
+		else if(re2 == `ReadEnable) begin
+	      	rdata2	<= regs[raddr2];
+	  	end
+		else begin
+	    	rdata2	<= `ZeroWord;
+	  	end
 	end
 
 endmodule

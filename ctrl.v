@@ -4,11 +4,11 @@
 //控制模块，控制停顿
 module ctrl(
 
-	input wire					 rst,
+	input wire			rst,
 
-	input wire                   stallreq_from_id,
+	input wire			stallreq_from_id,
 
-	output reg[5:0]              stall       
+	output reg[5:0]		stall       
 	
 );
 
@@ -16,12 +16,13 @@ module ctrl(
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			stall <= 6'b000000;
-		end else if(stallreq_from_id == `Stop) begin
+		end 
+		else if(stallreq_from_id == `Stop) begin
 			stall <= 6'b000111;			
-		end else begin
+		end 
+		else begin
 			stall <= 6'b000000;
-		end    //if
-	end      //always
+		end
+	end
 			
-
 endmodule
