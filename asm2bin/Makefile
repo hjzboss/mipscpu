@@ -5,7 +5,7 @@ SRC=$(FILENAME).s
 OBJ=$(FILENAME).o
 LD_OBJ=$(FILENAME).om
 BIN=$(FILENAME).bin
-OBJ_DIR=../data/
+OBJ_DIR=../JzCore/data/
 OBJECT=$(OBJ_DIR)$(FILENAME).data
 
 all: $(OBJECT)
