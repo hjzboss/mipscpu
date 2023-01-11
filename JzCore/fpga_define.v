@@ -1,5 +1,5 @@
 //fpga模式
-`define FPGA_MODE
+//`define FPGA_MODE
 
 `define LedWide 11:0 // led灯的宽度
 `define LedNum 12

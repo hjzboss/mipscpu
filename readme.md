@@ -87,8 +87,18 @@ mipscpu/
 sudo apt-get install mips-linux-gnu-gcc
 ```
 
-2. 如果要使用fpga，则在`fpga_define.v`中定义``define FPGA_MODE`，根据fpga开发板情况修改`fpga_define.v`文件中的参数，目前支持拨码开关和led灯
-3. 进入`asm2bin`目录在`test.s`文件中编写用于测试的汇编程序，使用`make`命令生成`test.data`机器程序，随后即可进行仿真或上板
+2. 安装verilator
+> <https://verilator.org/guide/latest/install.html#git-install>
+
+3. 安装gtkwave
+
+```bash
+sudo apt-get install gtkwave
+```
+
+3. 如果要使用fpga，则在`fpga_define.v`中定义``define FPGA_MODE`，根据fpga开发板情况修改`fpga_define.v`文件中的参数，目前支持拨码开关和led灯
+4. 进入`asm2bin`目录在`test.s`文件中编写用于测试的汇编程序，使用`make`命令生成`test.data`机器程序，随后即可进行仿真或上板
+5. 在主目录中使用`make`命令即可一键编译，得到仿真波形图
 
 ## 参考书籍
 

@@ -24,14 +24,14 @@ module ex(
 	
 );
 
-	reg[`RegBus] logicout;//逻辑运算的结果
-	reg[`RegBus] arithmeticres;//算术运算的结果
-	wire[`RegBus] reg2_i_mux;//补码
+	reg[`RegBus] logicout; // 逻辑运算的结果
+	reg[`RegBus] arithmeticres;// 算术运算的结果
+	wire[`RegBus] reg2_i_mux; // 补码
 	wire[`RegBus] reg1_i_not;	
 	wire[`RegBus] result_sum;
-	wire ov_sum;//溢出位
-	wire reg1_eq_reg2;//相等位
-	wire reg1_lt_reg2;//小于位
+	wire ov_sum; //溢出位
+	wire reg1_eq_reg2; // 相等位
+	wire reg1_lt_reg2; // 小于位
 
   assign aluop_o = aluop_i;
   
