@@ -94,7 +94,8 @@ run:
 	@echo "-- DONE --------------------"
 	@echo "To see waveforms, open wave.vcd in a waveform viewer"
 	@echo
-
+	
+	@echo $(shell pwd)
 	gtkwave ./logs/wave.vcd
 ######################################################################
 # Other targets

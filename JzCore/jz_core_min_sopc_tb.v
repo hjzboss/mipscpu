@@ -1,4 +1,5 @@
 
+/*
 `include "defines.v"
 `include "fpga_define.v"
 `timescale 1ns/1ps
@@ -39,3 +40,4 @@ jz_core_min_sopc dut(
 );
 
 endmodule
+*/

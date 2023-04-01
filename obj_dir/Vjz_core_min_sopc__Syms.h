@@ -7,7 +7,7 @@
 #ifndef VERILATED_VJZ_CORE_MIN_SOPC__SYMS_H_
 #define VERILATED_VJZ_CORE_MIN_SOPC__SYMS_H_  // guard
 
-#include "verilated_heavy.h"
+#include "verilated.h"
 
 // INCLUDE MODEL CLASS
 
@@ -23,13 +23,14 @@ class Vjz_core_min_sopc__Syms final : public VerilatedSyms {
     Vjz_core_min_sopc* const __Vm_modelp;
     bool __Vm_activity = false;  ///< Used by trace routines to determine change occurred
     uint32_t __Vm_baseCode = 0;  ///< Used by trace routines when tracing multiple models
+    VlDeleter __Vm_deleter;
     bool __Vm_didInit = false;
 
     // MODULE INSTANCE STATE
     Vjz_core_min_sopc___024root    TOP;
 
     // COVERAGE
-    uint32_t __Vcoverage[1327];
+    std::atomic<uint32_t> __Vcoverage[1267];
 
     // CONSTRUCTORS
     Vjz_core_min_sopc__Syms(VerilatedContext* contextp, const char* namep, Vjz_core_min_sopc* modelp);

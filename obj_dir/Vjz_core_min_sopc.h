@@ -8,17 +8,15 @@
 #ifndef VERILATED_VJZ_CORE_MIN_SOPC_H_
 #define VERILATED_VJZ_CORE_MIN_SOPC_H_  // guard
 
-#include "verilated_heavy.h"
+#include "verilated.h"
 #include "verilated_cov.h"
 
 class Vjz_core_min_sopc__Syms;
 class Vjz_core_min_sopc___024root;
 class VerilatedVcdC;
-class Vjz_core_min_sopc_VerilatedVcd;
-
 
 // This class is the main interface to the Verilated model
-class Vjz_core_min_sopc VL_NOT_FINAL {
+class Vjz_core_min_sopc VL_NOT_FINAL : public VerilatedModel {
   private:
     // Symbol table holding complete model state (owned by this class)
     Vjz_core_min_sopc__Syms* const vlSymsp;
@@ -28,8 +26,6 @@ class Vjz_core_min_sopc VL_NOT_FINAL {
     // PORTS
     // The application code writes and reads these signals to
     // propagate new values into/out from the Verilated model.
-    VL_IN16(&switch_on,11,0);
-    VL_OUT16(&led_out,11,0);
     VL_IN8(&clk,0,0);
     VL_IN8(&rst,0,0);
 
@@ -64,13 +60,20 @@ class Vjz_core_min_sopc VL_NOT_FINAL {
     void eval_end_step() {}
     /// Simulation complete, run final blocks.  Application must call on completion.
     void final();
+    /// Are there scheduled events to handle?
+    bool eventsPending();
+    /// Returns time at next time slot. Aborts if !eventsPending()
+    uint64_t nextTimeSlot();
     /// Trace signals in the model; called by application code
     void trace(VerilatedVcdC* tfp, int levels, int options = 0);
-    /// Return current simulation context for this model.
-    /// Used to get to e.g. simulation time via contextp()->time()
-    VerilatedContext* contextp() const;
     /// Retrieve name of this model instance (as passed to constructor).
     const char* name() const;
+
+    // Abstract methods from VerilatedModel
+    const char* hierName() const override final;
+    const char* modelName() const override final;
+    unsigned threads() const override final;
+    std::unique_ptr<VerilatedTraceConfig> traceConfig() const override final;
 } VL_ATTR_ALIGNED(VL_CACHE_LINE_BYTES);
 
 #endif  // guard
